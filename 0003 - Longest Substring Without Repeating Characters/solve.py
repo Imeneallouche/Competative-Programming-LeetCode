@@ -13,4 +13,4 @@ class Solution:
                 hashed[s[i]] = i
                 l += 1
                 i+=1
-        return result
+        return max(l,result)
