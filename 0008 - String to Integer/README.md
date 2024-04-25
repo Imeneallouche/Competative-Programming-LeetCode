@@ -1,4 +1,4 @@
-# 7. String to Integer
+# 8. String to Integer
 
 ```yaml
 Link: https://leetcode.com/problems/string-to-integer-atoi/
