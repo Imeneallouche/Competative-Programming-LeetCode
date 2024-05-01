@@ -2,7 +2,7 @@
 
 ```yaml
 Link: https://leetcode.com/problems/3sum/
-Difficulty: Easy
+Difficulty: Medium
 Topics:
   - Sorting
   - Array
