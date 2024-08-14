@@ -1,4 +1,15 @@
 done,prev=0,-1
+
+def printpos(pos):
+    for i in pos:
+        print(f"{i} = [{i//9}][{i%9}] = {pos[i]}")
+
+
+def deletepos(pos):
+    for i in pos:
+        if len(pos[i])==1:
+            print(f"[{i//9}][{i%9}]")
+
 board = [[".",".","9","7","4","8",".",".","."],
          ["7",".",".",".",".",".",".",".","."],
          [".","2",".","1",".","9",".",".","."],
@@ -27,12 +38,15 @@ while done!=prev and done<81:
     for i in range(81):
         if board[i//9][i%9]==".":
             for j in range(9):
+                # REMOVE POSSIBILITIES IN THE SAME ROW
                 if board[i//9][j]!='.' and int(board[i//9][j]) in pos[i]:
                     pos[i].remove(int(board[i//9][j]))
-            
+
+                # REMOVE POSSIBILITIES IN THE SAME COLUMN
                 if board[j][i%9] != '.' and int(board[j][i%9]) in pos[i]:
                     pos[i].remove(int(board[j][i%9]))
 
+                # REMOVE POSSIBILITIES IN THE SAME BOX
                 r = (i//27*3)+(j//3)
                 c =(i%9)//3*3+(j%3)
                 if board[r][c]!='.' and int(board[r][c]) in pos[i]:
@@ -45,14 +59,12 @@ while done!=prev and done<81:
             done+=1
     print(done)
 
-
 # complete the rest
+# THE IDEA: WHEN ONLY ONE CELL HAS ONEE POS IN THE ROW OR COLUMN OR BOX
 if done!=81:
     for i in range(9):
-        # by row
-        row = [item for arr in list(pos.values())[i*9:(i+1)*9] if len(pos[i])!=1 for item in arr]
+        row = [item for arr in list(pos.values())[i*9:(i+1)*9] for item in arr]
         column = [item for key, arr in pos.items() if key % 9 == i and len(pos[i])!=1 for item in arr]
-        #box = [item for key, arr in pos.items() if key==1 for item in arr] # not finished yet
 
         for j in range(1,10):
             if row.count(j)==1:
@@ -60,16 +72,3 @@ if done!=81:
 
             if column.count(j)==1:
                 print(f"col {i} with number {j}")
-
-            #if box.count(j)==1:
-            #    print("do something")
-
-
-
-#for i in range(9):
-#    for j in range(9):
-#        if(board[i][j]=='.'):
-#            print(f"board[{i}][{j}] pos = {pos[i*9+j]}")
-#        else:
-#            del pos[i*9+j]
-
