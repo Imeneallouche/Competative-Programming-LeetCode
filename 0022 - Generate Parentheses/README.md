@@ -1,8 +1,8 @@
 # 22. Generate Parentheses
 
 ```yaml
-Link: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
-Difficulty: Easy
+Link: https://leetcode.com/problems/generate-parentheses/
+Difficulty: Medium
 Topics:
   - Backtracking
   - Dynamic Programming
